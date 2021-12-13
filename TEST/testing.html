@@ -14,35 +14,35 @@
         </div>
         <form  id="form" class="form" autocomplete="off" onsubmit="event.preventDefault();onFormSubmit()">
             <div class="form-control">
-                <label for="title">Titre</label>
-                <input type="text" placeholder="Titre de livre" id="title" onkeydown="validation();" name="elements" />
+                <label >Titre</label>
+                <input type="text" placeholder="Titre de livre" id="title"  name="elements" />
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
                 <small id="errors"></small>
             </div>
             <div class="form-control">
-                <label for="author">Author</label>
+                <label >Author</label>
                 <input type="text" placeholder="Le nom de author" id="author" name="elements" />
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
                 <small>Error message</small>
             </div>
             <div class="form-control">
-                <label for="price">Prix</label>
+                <label >Prix</label>
                 <input type="number" placeholder="prix de livre" id="price" name="elements"/>
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
                 <small>Error message</small>
             </div>
             <div class="form-control">
-                <label for="date">Date de publication</label>
+                <label >Date de publication</label>
                 <input type="date" placeholder="Date de publication" id="date" name="elements"/>
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
                 <small>Error message</small>
             </div>
             <div class="form-control">
-                <label for="pet-select" name="elements">La langue</label><br>
+                <label >La langue</label><br>
                 <select  id="pet-select" name="elements">
                     <option value="">Choisir la langue</option>
                     <option value="arabe">Arabe</option>
@@ -54,20 +54,20 @@
                 <i class="fas fa-exclamation-circle"></i>
                 <small>Message Erreur</small>
             </div> 
-            <div class="form-control">
+            <div class="form-control" id="radios">
                     <p>Type de Live</p>
                     
-                    <label for="narratif" value="narratif" name="typeradio">Narratif</label>
+                    <label for="narratif" value="narratif" name="typeradio" class="booktpes">Narratif</label>
                     <input type="radio" id="narratif" name="typeradio" value="narratif">
-                    <label for="theatre" value="theatre" name="typeradio">Théâtral</label>
+                    <label for="theatre" value="theatre" name="typeradio" class="booktpes">Théâtral</label>
                     <input type="radio" id="theatre" name="typeradio" value="theatre">
                     
-                    <label for="poetique" value="poetique" name="typeradio">Poétique</label>
+                    <label for="poetique" value="poetique" name="typeradio" class="booktpes">Poétique</label>
                     <input type="radio" id="poetique" name="typeradio" value="poetique">
                     
-                    <label for="argumentatif" value="argumentatif" name="typeradio">Argumentatif</label>
+                    <label for="argumentatif" value="argumentatif" name="typeradio" class="booktpes">Argumentatif</label>
                     <input type="radio" id="argumentatif" name="typeradio" value="argumentatif">        
-                    <label for="epistolaire" value="epistolaire" name="typeradio">Epistolaire</label>
+                    <label for="epistolaire" value="epistolaire" name="typeradio" class="booktpes">Epistolaire</label>
                     <input type="radio" id="epistolaire" name="typeradio" value="epistolaire">
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
@@ -75,23 +75,25 @@
                  </div>
                  <div>
                      
-                     <button class="ajouter" onclick="">Ajouter</button>
+                     <button class="ajouter" >Ajouter</button>
+                     <button class="remettre" type="reset">Remettre</button>
                  </div>
            
             
         </form>
     </div>
-    <table  class="classtable" id="table">
-        
+    <table  class="classtable" id="testings">
+        <thead>
             <tr>
                 <th>Titre</th>
                 <th>Author</th>
                 <th>Prix</th>
                 <th>Date</th>
                 <th>langue</th>
+                <th>Type</th>
                 <th></th>
             </tr>
-       +  
+        </thead>
         <tbody>
                 
         </tbody> 

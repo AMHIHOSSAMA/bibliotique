@@ -26,13 +26,17 @@ function ckeckInput() {
     }
     if (title.value.length > 20) {
         setErrorFor(title, 'le titre ne peu etre pas plus de 20 lettres')
+    }else if(title.value.length < 4){
+        setErrorFor(title, 'le titre ne peu etre pas moin de 4 lettres')
+    }else {
+        setSuccessFor(title)
     }
 
     if (authorValue === '') {
         setErrorFor(author, 'le nom d\'author ne peu etre pas vide');
-    } else if (authorValue > 20) {
+    } else if (author.value.length > 20) {
         setErrorFor(author, 'le nom d\'author ne peu etre pas plus de 20 lettres');
-    } else if (authorValue < "4") {
+    } else if (author.value.length < "4") {
         setErrorFor(author, 'le nom d\'author ne peu etre pas moin de 4 lettre');
     } else {
         setSuccessFor(author);
@@ -42,9 +46,12 @@ function ckeckInput() {
 
     if (priceValue === '') {
         setErrorFor(price, 'Ajouter le prix de livre');
-    } else {
-        setSuccessFor(price)
+    } else if(price.value.length <= 0){
+        setErrorFor(price, 'le prix ne peu etre pas moin de 0 `${price.value.length}`');
+    }else if(price.value.length > 500){
+        setErrorFor(price, 'le prix ne peu etre pas moin de 500 dh ');
     }
+
     if (dateValue === '') {
         setErrorFor(date, 'Remplir la date de publication');
     } else {
@@ -78,55 +85,60 @@ const choice = document.getElementsByName('narratif');
 
 
 
+var selectedRow = null;
 
 function onFormSubmit() {
-    if (validate()) {
-        var formElements = lesElements();
-        if (variables == null)
-            insertNewRecord(formElements);
-        else
-            updateRecord(formElements);
-        resetForm();
+    event.preventDefault();
+    var formData = readFormData();
+    if(selectedRow === null) {
+        insertNewRecord(formData);
+    }else{
+
     }
 }
 
-function lesElements() {
-    var formElements = {};
-    formElements["title"] = document.getElementById("title").value;
-    formElements["author"] = document.getElementById("author").value;
-    formElements["price"] = document.getElementById("price").value;
-    formElements["date"] = document.getElementById("date").value;
-    formElements["language"] = document.getElementById("language").value;
-    return formElements;
+function readFormData() {
+    var formData = {};
+    formData["title"] = document.getElementById("title").value;
+    formData["author"] = document.getElementById("author").value;
+    formData["price"] = document.getElementById("price").value;
+    formData["date"] = document.getElementById("date").value;
+    formData["language"] = document.getElementById("pet-select").value;
+    formData["booktpes"] = document.getElementsByClassName(".booktpes").value;
+    return formData;
 }
-submitForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = lesElements();
-    choice.forEach(r => {
-        if (r.checked) {
 
-            data.bookType = r.value;
-        }
-    })
-    booksList.push({ ...data, id: Math.ceil(Math.random() * 12 + Date.now()) });
-    console.log(data);
-    const markup = `
-    ${booksList.map(item => {
-        return `<tr>
-        <td>${item.title}</td>
-        <td>${item.author}</td>
-        <td>${item.price}</td>
-        <td>${item.date}</td>
-        <td>${item.language}</td>
-        <td>${item.bookType}</td>
-        <td><button type="button" onEdit(this) >Edit</button><button type="button" onclick=deletElements()>Delete</button></td>
-        </tr>`
+function insertNewRecord(data) {
+    var table = document.getElementById("testings").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.length);
+     var cell1 = newRow.insertCell(0);
+        cell1.innerHTML = data.title;
+    var cell2 = newRow.insertCell(1);
+        cell2.innerHTML = data.author;
+    var cell3 = newRow.insertCell(2);
+        cell3.innerHTML = data.price;
+    var cell4 = newRow.insertCell(3);
+        cell4.innerHTML = data.date;
+     var cell5 = newRow.insertCell(4);
+        cell5.innerHTML = data.language;
+    var cell6 = newRow.insertCell(5);
+        cell6.innerHTML = data.booktpes;
+    var cell6 = newRow.insertCell(6);
+        cell6.innerHTML = `<button onClick="onEdit(this)">Edit</button>
+                       <button onClick="onDelete(this)">Delete</button>`;
+}
 
-    }).join('')
-        }`;
-
-    list.innerHTML = ''
-    list.insertAdjacentHTML('afterbegin', markup);
-});
-
-
+function resetForm() {
+    document.getElementById("title").value = "";
+    document.getElementById("author").value = "";
+    document.getElementById("price").value = "";
+    document.getElementById("date").value = "";
+    selectedRow = null;
+}
+function onEdit(td) {
+    selectedRow = td.parentElement.parentElement;
+    document.getElementById("title").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("author").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("price").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("date").value = selectedRow.cells[3].innerHTML;
+}
