@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="testing.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Ajouter votre livre</h2>
+        </div>
+        <form  id="form" class="form" autocomplete="off" onsubmit="event.preventDefault();onFormSubmit()">
+            <div class="form-control">
+                <label for="title">Titre</label>
+                <input type="text" placeholder="Titre de livre" id="title" onkeydown="validation();" name="elements" />
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small id="errors"></small>
+            </div>
+            <div class="form-control">
+                <label for="author">Author</label>
+                <input type="text" placeholder="Le nom de author" id="author" name="elements" />
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for="price">Prix</label>
+                <input type="number" placeholder="prix de livre" id="price" name="elements"/>
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for="date">Date de publication</label>
+                <input type="date" placeholder="Date de publication" id="date" name="elements"/>
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for="pet-select" name="elements">La langue</label><br>
+                <select  id="pet-select" name="elements">
+                    <option value="">Choisir la langue</option>
+                    <option value="arabe">Arabe</option>
+                    <option value="français">Français</option>
+                    <option value="anglais">Anglais</option>
+                    <option value="espagnol">Espagnol</option>
+                </select>    
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Message Erreur</small>
+            </div> 
+            <div class="form-control">
+                    <p>Type de Live</p>
+                    
+                    <label for="narratif" value="narratif" name="typeradio">Narratif</label>
+                    <input type="radio" id="narratif" name="typeradio" value="narratif">
+                    <label for="theatre" value="theatre" name="typeradio">Théâtral</label>
+                    <input type="radio" id="theatre" name="typeradio" value="theatre">
+                    
+                    <label for="poetique" value="poetique" name="typeradio">Poétique</label>
+                    <input type="radio" id="poetique" name="typeradio" value="poetique">
+                    
+                    <label for="argumentatif" value="argumentatif" name="typeradio">Argumentatif</label>
+                    <input type="radio" id="argumentatif" name="typeradio" value="argumentatif">        
+                    <label for="epistolaire" value="epistolaire" name="typeradio">Epistolaire</label>
+                    <input type="radio" id="epistolaire" name="typeradio" value="epistolaire">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Message Erreur</small>
+                 </div>
+                 <div>
+                     
+                     <button class="ajouter" onclick="">Ajouter</button>
+                 </div>
+           
+            
+        </form>
+    </div>
+    <table  class="classtable" id="table">
+        
+            <tr>
+                <th>Titre</th>
+                <th>Author</th>
+                <th>Prix</th>
+                <th>Date</th>
+                <th>langue</th>
+                <th></th>
+            </tr>
+       +  
+        <tbody>
+                
+        </tbody> 
+    </table>
+            
+    </div>
+    
+   <script src="testing.js"></script>
+    
+    
+</body>
+</html>
